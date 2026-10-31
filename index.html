@@ -1,6 +1,21 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Soil Field Guide</title><link rel="stylesheet" href="styles.css"></head><body>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Soil Field Guide</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""></head><body>
 <header><div class="nav"><a class="brand" href="index.html">SOIL FIELD GUIDE</a><nav><a href="index.html">Home</a><a href="soils.html">Soil series</a><a href="blog.html">Blog</a></nav></div></header>
 <main><section class="hero"><div class="eyebrow">A student soil resource</div><h1>Getting to know the soil beneath our feet</h1><p class="lead">Explore soil-series profiles, horizon observations, water relationships, and field notes. This guide brings the Hyalite and Beaverelle soil-series materials together in one place.</p><a href="soils.html">Explore the soil series →</a></section>
+<section class="soil-map-section"><h2>Hyalite soil series location</h2><div id="soil-map" role="application" aria-label="Map showing the Hyalite soil series location" style="height:380px;width:100%;border-radius:12px;overflow:hidden;"></div></section>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+  const hyaliteCoordinates = [45.7706, -111.0128];
+  const soilMap = L.map('soil-map').setView(hyaliteCoordinates, 11);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(soilMap);
+  L.marker(hyaliteCoordinates).addTo(soilMap).bindTooltip('Hyalite', {
+    permanent: true,
+    direction: 'top',
+    offset: [0, -8]
+  }).openTooltip();
+</script>
 <h2>Explore the guide</h2><div class="cards">
 <article class="card"><span class="pill">Soil series</span><h3>Hyalite</h3><p>Classification, horizon observations, and water-budget figures from the supplied soil report.</p><a href="hyalite.html">Read the Hyalite profile →</a></article>
 <article class="card"><span class="pill">Soil series</span><h3>Beaverelle</h3><p>Profile information and horizon data provided in the Beaverelle image.</p><a href="beaverelle.html">Read the Beaverelle profile →</a></article>
